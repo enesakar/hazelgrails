@@ -50,18 +50,19 @@ Use distributed data structures of Hazelcast in your Grails project.
         // TODO Implement registering dynamic methods to classes (optional)
         def service = ctx.getBean("hazelService")
         for (domainClass in application.domainClasses) {
+
             domainClass.metaClass.saveHz = {->
                 delegate.save()
-                service.map("domain_"+domainClass.name).put(delegate.id, delegate)
-            }
-            domainClass.metaClass.putHz = {->
-                service.map("domain_"+domainClass.name).put(delegate.id, delegate)
+                if (delegate.id)
+                service.map("domain_" + domainClass.name).put(delegate.id, delegate)
             }
             domainClass.metaClass.getHz = { id ->
-                def ss = service.map("domain_"+domainClass.name).get(Integer.valueOf(id).longValue())
+                def ss = service.map("domain_" + domainClass.name).get(Integer.valueOf(id).longValue())
                 if (!ss) {
                     ss = delegate.get(id)
-                    service.map("domain_"+domainClass.name).put(id, ss)
+                    if (ss) {
+                        service.map("domain_" + domainClass.name).put(id, ss)
+                    }
                 }
                 return ss
             }
