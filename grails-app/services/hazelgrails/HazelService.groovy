@@ -15,6 +15,8 @@ import java.util.concurrent.FutureTask
 import com.hazelcast.config.Config
 import com.hazelcast.config.FileSystemXmlConfig
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
+import com.hazelcast.core.Cluster
+import javax.annotation.PostConstruct
 
 class HazelService {
     def grailsApplication
@@ -22,6 +24,10 @@ class HazelService {
     HazelcastInstance instance
 
     private HazelService() {
+    }
+
+    @PostConstruct
+    void init() {
         this.instance = Hazelcast.newHazelcastInstance(null)
     }
 
@@ -56,7 +62,7 @@ class HazelService {
 
     Collection executeOnAllMembers(Callable callable) {
         Collection<Member> members = instance.getCluster().getMembers()
-        MultiTask<String> multitask = new MultiTask<String>(callable, members);
+        MultiTask multitask = new MultiTask(callable, members);
         ExecutorService executorService = Hazelcast.getExecutorService();
         executorService.execute(multitask);
         return multitask.get();

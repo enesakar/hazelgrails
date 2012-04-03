@@ -15,11 +15,13 @@ class HazelgrailsGrailsPlugin {
     def author = "Enes Akar"
     def authorEmail = "enesakar@gmail.com"
     def description = '''\
-Use distributed data structures of Hazelcast in your Grails project.
+Distribute your data with Hazelcast in your Grails project.
+See https://github.com/enesakar/hazelgrails
 '''
 
     // URL to the plugin's documentation
-    def documentation = "http://grails.org/plugin/hazelgrails"
+    def documentation = "https://github.com/enesakar/hazelgrails"
+//    def documentation = "http://grails.org/plugin/hazelgrails"
 
     // Extra (optional) plugin metadata
 
@@ -47,7 +49,6 @@ Use distributed data structures of Hazelcast in your Grails project.
     }
 
     def doWithDynamicMethods = { ctx ->
-        // TODO Implement registering dynamic methods to classes (optional)
         def service = ctx.getBean("hazelService")
         for (domainClass in application.domainClasses) {
 
@@ -56,8 +57,8 @@ Use distributed data structures of Hazelcast in your Grails project.
                 if (delegate.id)
                 service.map("domain_" + domainClass.name).put(delegate.id, delegate)
             }
-            domainClass.metaClass.getHz = { id ->
-                def ss = service.map("domain_" + domainClass.name).get(Integer.valueOf(id).longValue())
+            domainClass.metaClass.static.getHz = { id ->
+                def ss = service.map("domain_" + domainClass.name).get(id)
                 if (!ss) {
                     ss = delegate.get(id)
                     if (ss) {

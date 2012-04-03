@@ -27,7 +27,8 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
         // runtime 'mysql:mysql-connector-java:5.1.5'
-        compile 'com.hazelcast:hazelcast:2.0'
+        compile 'com.hazelcast:hazelcast:2.0.2'
+        compile 'com.hazelcast:hazelcast-hibernate:2.0.2'
     }
 
     plugins {

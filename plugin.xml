@@ -1,17 +1,12 @@
-<plugin name='hazelgrails' version='0.1' grailsVersion='1.3 &gt; *'>
+<plugin name='hazelgrails' version='0.1' grailsVersion='2.0.1 &gt; *'>
   <author>Enes Akar</author>
   <authorEmail>enesakar@gmail.com</authorEmail>
   <title>Hazelcast Plugin</title>
-  <description>Use distributed data structures of Hazelcast in your Grails project.
+  <description>Distribute your data with Hazelcast in your Grails project.
 </description>
   <documentation>http://grails.org/plugin/hazelgrails</documentation>
   <type>HazelgrailsGrailsPlugin</type>
   <resources>
-    <resource>hazelgrails.HazelController</resource>
-    <resource>hazelgrails.TestController</resource>
-    <resource>hazelgrails.City</resource>
-    <resource>hazelgrails.Person</resource>
-    <resource>hazelgrails.Student</resource>
     <resource>hazelgrails.HazelService</resource>
   </resources>
   <repositories>
@@ -20,13 +15,19 @@
     <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
     <repository name='grailsCore' url='http://svn.codehaus.org/grails/trunk/grails-plugins' />
     <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
+    <repository name='http://grails.org/plugins' url='http://grails.org/plugins' />
   </repositories>
-  <dependencies>
-    <compile>
-      <dependency group='com.hazelcast' name='hazelcast' version='2.0' />
-    </compile>
-  </dependencies>
-  <plugins />
+  <dependencies />
+  <plugins>
+    <runtime>
+      <plugin group='org.grails.plugins' name='resources' version='1.1.6' />
+      <plugin group='org.grails.plugins' name='hibernate' version='2.0.1' />
+      <plugin group='org.grails.plugins' name='jquery' version='1.7.1' />
+    </runtime>
+    <build>
+      <plugin group='org.grails.plugins' name='tomcat' version='2.0.1' />
+    </build>
+  </plugins>
   <runtimePluginRequirements />
   <behavior />
 </plugin>
