@@ -17,8 +17,7 @@ grails.project.dependency.resolution = {
     }
 
     plugins {
-        build(":tomcat:$grailsVersion",
-              ":release:1.0.0") {
+        build(':release:1.0.1', ':svn:1.0.2') {
             export = false
         }
     }
