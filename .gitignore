@@ -1,0 +1,6 @@
+.settings
+*.log
+*.zip
+/plugin.xml
+/target/
+/web-app/
