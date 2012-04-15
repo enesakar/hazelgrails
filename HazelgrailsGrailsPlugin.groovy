@@ -6,7 +6,7 @@ class HazelgrailsGrailsPlugin {
     def authorEmail = "enesakar@gmail.com"
     def description = '''\
 Distribute your data with Hazelcast in your Grails project.
-See https://github.com/enesakar/hazelgrails
+See http://blog.codepoly.com/distribute-grails-with-hazelcast
 '''
     def documentation = "https://github.com/enesakar/hazelgrails"
 
