@@ -13,7 +13,7 @@ See http://blog.codepoly.com/distribute-grails-with-hazelcast
     // License: one of 'APACHE', 'GPL2', 'GPL3'
 //    def license = "APACHE"
 
-    def issueManagement = [ system: "JIRA", url: "http://jira.grails.org/browse/GPHAZELGRAILS" ]
+    def issueManagement = [ system: "GITHUB", url: "https://github.com/enesakar/hazelgrails/issues" ]
     def scm = [url: 'https://github.com/enesakar/hazelgrails']
 
     def doWithDynamicMethods = { ctx ->
