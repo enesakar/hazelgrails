@@ -4,10 +4,7 @@
 
 Run the command:
 
-> install-plugin https://s3.amazonaws.com/hazelenes/hazelgrails-0.1.zip
-
-Yes, you are right, I will try to migrate the plugin to Grails Central so anyone can find it on Grails Plugins page.
-
+> install-plugin hazelgrails
 
 ### Configuration
 You will see hazelcast.xml in conf directory under plugins directory.
