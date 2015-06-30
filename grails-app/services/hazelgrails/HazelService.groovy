@@ -1,5 +1,7 @@
 package hazelgrails
 
+import grails.core.GrailsApplication
+
 import java.util.concurrent.Callable
 import java.util.concurrent.Future
 import java.util.concurrent.FutureTask
@@ -18,7 +20,7 @@ class HazelService {
 
     static transactional = false
 
-    def grailsApplication
+    GrailsApplication grailsApplication
 
     HazelcastInstance instance
 

@@ -4,3 +4,7 @@
 /plugin.xml
 /target/
 /web-app/
+/.idea/
+/gradle/
+hazelgrails.iml
+gradle.properties
