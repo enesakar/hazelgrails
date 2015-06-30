@@ -1,6 +1,9 @@
-class HazelgrailsGrailsPlugin {
-    def version = "0.1"
-    def grailsVersion = "1.3 > *"
+package hazelgrails
+
+import grails.plugins.Plugin
+
+class HazelgrailsGrailsPlugin  extends Plugin{
+    def grailsVersion = "3.0.2 > *"
     def title = "Hazelcast Plugin"
     def author = "Enes Akar"
     def authorEmail = "enesakar@gmail.com"
@@ -8,11 +11,13 @@ class HazelgrailsGrailsPlugin {
 Distribute your data with Hazelcast in your Grails project.
 See http://blog.codepoly.com/distribute-grails-with-hazelcast
 '''
+    def profiles = ['web']
     def documentation = "https://github.com/enesakar/hazelgrails"
 
     // License: one of 'APACHE', 'GPL2', 'GPL3'
 //    def license = "APACHE"
 
+    def developers = [[name: 'Rohit Bishnoi', email: 'rbdharnia@gmail.com']]
     def issueManagement = [ system: "GITHUB", url: "https://github.com/enesakar/hazelgrails/issues" ]
     def scm = [url: 'https://github.com/enesakar/hazelgrails']
 
