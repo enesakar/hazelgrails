@@ -13,8 +13,6 @@ You can configure hazelcast in details.
 For available options have a look at:
 [http://www.hazelcast.com/docs/2.0/manual/single_html/#Config](http://www.hazelcast.com/docs/2.0/manual/single_html/#Config)
 
-To see hazelcast logs add following to Config.groovy:
-> info 'com.hazelcast'
 
 Use Hazelcast as Hibernate 2nd Level Cache
 In application.groovy add the following line.
