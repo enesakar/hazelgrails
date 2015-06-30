@@ -2,12 +2,11 @@
 
 ### How to Install Plugin
 
-Run the command:
+Just add the following dependency under the dependencies block in your project's build.gradle:
 
-> install-plugin hazelgrails
+> compile "org.grails.plugins:hazelgrails:1.0-SNAPSHOT"
 
 ### Configuration
-You will see hazelcast.xml in conf directory under plugins directory.
 
 You can configure hazelcast in details.
 
@@ -18,7 +17,7 @@ To see hazelcast logs add following to Config.groovy:
 > info 'com.hazelcast'
 
 Use Hazelcast as Hibernate 2nd Level Cache
-In DataSource.groovy replace the following line in hibernate configuration block.
+In application.groovy add the following line.
 
 cache.region.factory_class = 'com.hazelcast.hibernate.HazelcastCacheRegionFactory'
 
