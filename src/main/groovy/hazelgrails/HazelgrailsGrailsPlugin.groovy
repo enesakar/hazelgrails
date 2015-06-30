@@ -2,7 +2,7 @@ package hazelgrails
 
 import grails.plugins.Plugin
 
-class HazelgrailsGrailsPlugin  extends Plugin{
+class HazelgrailsGrailsPlugin extends Plugin {
     def grailsVersion = "3.0.2 > *"
     def title = "Hazelcast Plugin"
     def author = "Enes Akar"
@@ -18,17 +18,18 @@ See http://blog.codepoly.com/distribute-grails-with-hazelcast
 //    def license = "APACHE"
 
     def developers = [[name: 'Rohit Bishnoi', email: 'rbdharnia@gmail.com']]
-    def issueManagement = [ system: "GITHUB", url: "https://github.com/enesakar/hazelgrails/issues" ]
+    def issueManagement = [system: "GITHUB", url: "https://github.com/enesakar/hazelgrails/issues"]
     def scm = [url: 'https://github.com/enesakar/hazelgrails']
 
-    def doWithDynamicMethods = { ctx ->
-        def service = ctx.hazelService
-        for (domainClass in application.domainClasses) {
 
-            domainClass.metaClass.saveHz = {->
+    @Override
+    void doWithDynamicMethods() {
+        HazelService service = applicationContext.hazelService
+        for (domainClass in grailsApplication.domainClasses) {
+            domainClass.metaClass.saveHz = { ->
                 delegate.save()
                 if (delegate.id)
-                service.map("domain_" + domainClass.name).put(delegate.id, delegate)
+                    service.map("domain_" + domainClass.name).put(delegate.id, delegate)
             }
             domainClass.metaClass.static.getHz = { id ->
                 def ss = service.map("domain_" + domainClass.name).get(id)
