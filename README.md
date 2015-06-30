@@ -24,4 +24,4 @@ cache.region.factory_class = 'com.hazelcast.hibernate.HazelcastCacheRegionFactor
 
 ### For more documentation:
 See:
-[http://blog.codepoly.com/distribute-grails-with-hazelcast](http://blog.codepoly.com/distribute-grails-with-hazelcast)
+[http://blog.hazelcast.com/2012/04/03/distribute-grails-with-hazelcast-in-this-article-i-will-try/](http://blog.hazelcast.com/2012/04/03/distribute-grails-with-hazelcast-in-this-article-i-will-try/)
