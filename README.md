@@ -14,8 +14,7 @@ For available options have a look at:
 [http://www.hazelcast.com/docs/2.0/manual/single_html/#Config](http://www.hazelcast.com/docs/2.0/manual/single_html/#Config)
 
 
-Use Hazelcast as Hibernate 2nd Level Cache
-In application.groovy add the following line.
+To use Hazelcast as Hibernate 2nd Level Cache, add the following line to application.groovy:
 
 cache.region.factory_class = 'com.hazelcast.hibernate.HazelcastCacheRegionFactory'
 
