@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        grailsVersion = project.grailsVersion
+        grailsVersion = "3.1.4"
     }
     repositories {
         mavenLocal()
@@ -30,8 +30,8 @@ apply from:'https://raw.githubusercontent.com/grails/grails-profile-repository/m
 apply from:'https://raw.githubusercontent.com/grails/grails-profile-repository/master/profiles/plugin/templates/bintrayPublishing.gradle'
 
 ext {
-    grailsVersion = project.grailsVersion
-    gradleWrapperVersion = project.gradleWrapperVersion
+    grailsVersion = "3.1.4"
+    gradleWrapperVersion = "2.6"
 }
 
 sourceCompatibility = 1.7
@@ -61,8 +61,8 @@ dependencies {
     provided "org.grails:grails-dependencies"
     provided 'javax.servlet:javax.servlet-api:3.1.0'
 
-    compile 'com.hazelcast:hazelcast-all:2.5'
-    compile 'com.hazelcast:hazelcast-hibernate:2.5'
+    compile 'com.hazelcast:hazelcast-all:3.6.2'
+    compile 'com.hazelcast:hazelcast-hibernate:3.6.2'
 
     testCompile "org.grails:grails-plugin-testing"
 

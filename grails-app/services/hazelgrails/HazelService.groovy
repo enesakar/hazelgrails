@@ -1,18 +1,16 @@
 package hazelgrails
 
+import com.hazelcast.core.IExecutorService
+import com.hazelcast.core.Member
 import grails.core.GrailsApplication
 
 import java.util.concurrent.Callable
 import java.util.concurrent.Future
-import java.util.concurrent.FutureTask
 import java.util.concurrent.locks.Lock
 
-import com.hazelcast.core.DistributedTask
 import com.hazelcast.core.Hazelcast
 import com.hazelcast.core.HazelcastInstance
 import com.hazelcast.core.ITopic
-import com.hazelcast.core.Member
-import com.hazelcast.core.MultiTask
 
 import javax.annotation.PostConstruct
 
@@ -36,6 +34,8 @@ class HazelService {
         instance.getMap(mapName)
     }
 
+
+
     Queue queue(String queueName) {
         instance.getQueue(queueName)
     }
@@ -52,6 +52,10 @@ class HazelService {
         instance.getList(listName)
     }
 
+    IExecutorService executorService(String executorName) {
+        instance.getExecutorService(executorName)
+    }
+
     Lock lock(Object lock) {
         instance.getLock(lock)
     }
@@ -60,20 +64,16 @@ class HazelService {
         Hazelcast.getIdGenerator(name).newId()
     }
 
-    Collection executeOnAllMembers(Callable callable) {
-        Collection<Member> members = instance.cluster.members
-        MultiTask multitask = new MultiTask(callable, members)
-        Hazelcast.executorService.execute(multitask)
-        return multitask.get()
+    Map<Member, Future> executeOnAllMembers(Callable callable) {
+        Map<Member, Future> result = instance.getExecutorService("default").submitToAllMembers(callable)
+        return result
     }
 
     Object executeOnSomewhere(Callable callable) {
-        Hazelcast.executorService.submit(callable).get()
+        return instance.getExecutorService("default").submit(callable).get()
     }
 
     Object executeOnMemberOwningTheKey(Callable callable, Object key) {
-        FutureTask task = new DistributedTask(callable, key)
-        Hazelcast.executorService.execute(task)
-        return task.get()
+        return instance.getExecutorService("default").submitToKeyOwner(callable, key).get()
     }
 }
