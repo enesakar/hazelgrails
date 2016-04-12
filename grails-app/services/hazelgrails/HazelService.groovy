@@ -1,5 +1,6 @@
 package hazelgrails
 
+import com.hazelcast.config.Config
 import com.hazelcast.core.IExecutorService
 import com.hazelcast.core.Member
 import grails.core.GrailsApplication
@@ -27,7 +28,7 @@ class HazelService {
 
     @PostConstruct
     void init() {
-        instance = Hazelcast.newHazelcastInstance(null)
+        instance = Hazelcast.newHazelcastInstance()
     }
 
     Map map(String mapName) {
